@@ -1,17 +1,22 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+// tailwind.config.js
+module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    './app/**/*.{js,ts,jsx,tsx}', // include your project paths to apply Tailwind
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        custom1: '#ecf8f8', // Light Blue / Very Pale Cyan
+        custom2: '#eee4e1', // Light Cream / Pale Grayish Pink
+        custom3: '#e7d8c9', // Light Beige
+        custom4: '#e6beae', // Soft Peach
+        custom5: '#b2967d', // Warm Brownish Tan
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'), // Ensure all necessary plugins are included
+  ],
 };
