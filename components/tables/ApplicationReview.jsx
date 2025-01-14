@@ -21,7 +21,7 @@ const VendorsData = [
   },
 ];
 
-export default function VendorTable({ onEdit, onDelete }) {
+export default function ApplicationReviewTable({ onEdit, onDelete }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredVendors = VendorsData.filter((vendor) =>
@@ -75,16 +75,16 @@ export default function VendorTable({ onEdit, onDelete }) {
                 <td className="py-4 px-4 sm:px-6 text-xs sm:text-sm text-gray-600">{vendor.ssmRegistrationNumber}</td>
                 <td className="py-4 px-4 sm:px-6 text-xs sm:text-sm text-gray-600">
                   <button
-                    className="mr-2 px-3 py-1 sm:px-4 sm:py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="mr-2 px-3 py-1 sm:px-4 sm:py-2 bg-green-600 text-white rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
                     onClick={() => onEdit(vendor)}
                   >
-                    Edit
+                    Approve
                   </button>
                   <button
                     className="mt-2 px-3 py-1 sm:px-4 sm:py-2 bg-red-600 text-white rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                     onClick={() => onDelete(vendor)}
                   >
-                    Delete
+                    Reject
                   </button>
                 </td>
               </tr>

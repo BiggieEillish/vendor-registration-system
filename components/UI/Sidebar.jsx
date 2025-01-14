@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { classNames } from "@/utils/helpers";
 import SidebarDropdown from "./SidebarDropdown";
-import { HomeIcon, UsersIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+import { HomeIcon, UsersIcon, DocumentDuplicateIcon, IdentificationIcon, UserPlusIcon, UserGroupIcon, DocumentPlusIcon, ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
 
 export default function Sidebar({ isUserDashboard }) {
   const router = useRouter();
@@ -25,18 +25,31 @@ export default function Sidebar({ isUserDashboard }) {
         {
           name: "Vendor",
           children: [
-            { name: "Add Vendor", href: "/adminDashboard/addVendor" },
-            { name: "All Vendor Info", href: "/adminDashboard/allVendorInfo" },
+            { name: "Add Vendor", href: "/adminDashboard/addVendor", 
+              icon: UserPlusIcon
+            },
+            { name: "All Vendor Info", href: "/adminDashboard/allVendorInfo",
+              icon: UserGroupIcon
+             },
           ],
           icon: UsersIcon,
         },
         {
           name: "Contracts",
           children: [
-            { name: "Add Contract", href: "/adminDashboard/addContract" },
-            { name: "All Contract Info", href: "/adminDashboard/allContractInfo" },
+            { name: "Add Contract", href: "/adminDashboard/addContract",
+              icon:DocumentPlusIcon
+             },
+            { name: "All Contract Info", href: "/adminDashboard/allContractInfo",
+              icon: ClipboardDocumentListIcon
+             },
           ],
           icon: DocumentDuplicateIcon,
+        },
+        {
+          name: "Application Review",
+          href: "/adminDashboard/applicationReview",
+          icon: IdentificationIcon,
         },
       ];
 

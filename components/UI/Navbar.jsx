@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Modal from "@/components/UI/Modal";
 import LoginForm from "@/components/forms/LoginForm";
-import { useSession, signOut } from "next-auth/react";
+import { useSession, signOut, SessionProvider } from "next-auth/react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,6 +54,7 @@ export default function Navbar() {
           <Link href="#" className="text-gray-800 hover:text-blue-600">
             Contact
           </Link>
+          
         {session ? (
         <button onClick={() => signOut()} className="bg-red-500 text-white p-2 rounded">
           Sign Out
@@ -67,7 +68,7 @@ export default function Navbar() {
               Login
             </button>
             <Link
-              href="/landingPage/userSignup"
+              href="/signup"
               className="px-4 py-2 text-sm font-medium text-gray-800 bg-gray-200 rounded hover:bg-gray-300"
             >
               Sign Up

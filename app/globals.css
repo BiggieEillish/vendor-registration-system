@@ -19,3 +19,8 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.custom-topnav {
+  background-color: #4a5568; /* Softer shade of gray */
+  border-bottom: 1px solid #2d3748; /* Optional: Add a subtle border for separation */
+}
