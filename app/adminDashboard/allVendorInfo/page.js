@@ -4,6 +4,9 @@ import { useState } from 'react';
 import Modal from '@/components/UI/Modal';
 import EditVendorForm from '@/components/forms/EditVendorForm';
 import VendorTable from '@/components/tables/AllVendorInfo';
+import Link from 'next/link';
+import SectionHeader from '@/components/UI/SectionHeader';
+import { UserPlusIcon } from '@heroicons/react/24/outline';
 
 export default function AllVendorInfo() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,14 +23,29 @@ export default function AllVendorInfo() {
   };
 
   const handleDelete = (vendor) => {
-    // Implement delete logic
+    // Implement delete logic here
     console.log('Delete vendor:', vendor);
   };
 
   return (
     <div className="p-4 sm:p-6">
-      <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 text-gray-800">List of Vendor</h2>
+      {/* Top Section Header with Title & Subtitle */}
+      <SectionHeader
+        title="List of Vendors"
+        subtitle="Here you can access your vendors and add them."
+      >
+        <Link
+          className=" inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          href="/adminDashboard/addVendor"
+        > <UserPlusIcon className=" h-5 w-5" />
+          Add Contract
+        </Link>
+      </SectionHeader>
+
+      {/* Vendor Table */}
       <VendorTable onEdit={openModal} onDelete={handleDelete} />
+
+      {/* Edit Modal */}
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <EditVendorForm vendor={selectedVendor} onClose={closeModal} />

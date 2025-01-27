@@ -41,7 +41,7 @@ export default function AddContractForm() {
 
   return (
     <div className="p-4 sm:p-6">
-      <div className="p-4 sm:p-6 border border-gray-300 rounded-lg bg-white shadow-md max-w-4xl mx-auto">
+      <div className="p-4 sm:p-6 border border-gray-300 rounded-lg bg-slate-50 shadow-md max-w-4xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 text-black">Add Contract</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 gap-6">
@@ -99,7 +99,7 @@ export default function AddContractForm() {
                 value={formData.contractNumber}
                 onChange={handleChange}
                 className="text-gray-500 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                readOnly
+                
               />
             </div>
 
@@ -152,6 +152,7 @@ export default function AddContractForm() {
                 type="text"
                 name="contractAmount"
                 value={formData.contractAmount}
+                placeholder='RM'
                 onChange={handleChange}
                 className="text-gray-500 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 required

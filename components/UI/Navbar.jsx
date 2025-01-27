@@ -61,18 +61,18 @@ export default function Navbar() {
         </button>
       ) : ( 
           <div className="flex space-x-4">
+            <Link
+              href="/signup"
+              className="px-4 py-2 text-sm font-medium text-blue-800 bg-gray-200 rounded hover:bg-gray-300"
+            >
+              Sign Up
+            </Link>
             <button
               onClick={() => setIsLoginModalOpen(true)}
               className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700"
             >
               Login
             </button>
-            <Link
-              href="/signup"
-              className="px-4 py-2 text-sm font-medium text-gray-800 bg-gray-200 rounded hover:bg-gray-300"
-            >
-              Sign Up
-            </Link>
           </div>
           )}
         </div>
@@ -109,7 +109,7 @@ export default function Navbar() {
             <li>
               <button
                 onClick={() => setIsLoginModalOpen(true)}
-                className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700"
+                className="w-full px-4 py-2 text-sm font-medium text-white bg-green-600 rounded hover:bg-blue-700"
               >
                 Login
               </button>

@@ -19,14 +19,14 @@ export default function LandingPageLayout({ children }) {
       <head>
         <title>Landing Page</title>
       </head>
-      <body className="bg-gray-100">
+      <body className="bg-white">
         
           {isExcludedRoute ? (
             // For excluded routes, render only children
             <>{children}</>
           ) : (
             <>
-              <Navbar />
+              <Navbar className= "bg-gray-100"/>
               <main>{children}</main>
             </>
           )}

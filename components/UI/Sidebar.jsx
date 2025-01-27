@@ -3,7 +3,17 @@
 import { useRouter } from "next/navigation";
 import { classNames } from "@/utils/helpers";
 import SidebarDropdown from "./SidebarDropdown";
-import { HomeIcon, UsersIcon, DocumentDuplicateIcon, IdentificationIcon, UserPlusIcon, UserGroupIcon, DocumentPlusIcon, ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
+import {
+  HomeIcon,
+  UsersIcon,
+  DocumentDuplicateIcon,
+  EyeIcon,
+  UserPlusIcon,
+  UserGroupIcon,
+  DocumentPlusIcon,
+  ClipboardDocumentListIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Sidebar({ isUserDashboard }) {
   const router = useRouter();
@@ -25,60 +35,78 @@ export default function Sidebar({ isUserDashboard }) {
         {
           name: "Vendor",
           children: [
-            { name: "Add Vendor", href: "/adminDashboard/addVendor", 
-              icon: UserPlusIcon
+            {
+              name: "Add Vendor",
+              href: "/adminDashboard/addVendor",
+             
             },
-            { name: "All Vendor Info", href: "/adminDashboard/allVendorInfo",
-              icon: UserGroupIcon
-             },
+            {
+              name: "All Vendor Info",
+              href: "/adminDashboard/allVendorInfo",
+              
+            },
           ],
           icon: UsersIcon,
         },
         {
           name: "Contracts",
           children: [
-            { name: "Add Contract", href: "/adminDashboard/addContract",
-              icon:DocumentPlusIcon
-             },
-            { name: "All Contract Info", href: "/adminDashboard/allContractInfo",
-              icon: ClipboardDocumentListIcon
-             },
+            {
+              name: "Add Contract",
+              href: "/adminDashboard/addContract",
+              
+            },
+            {
+              name: "All Contract Info",
+              href: "/adminDashboard/allContractInfo",
+              
+            },
           ],
           icon: DocumentDuplicateIcon,
         },
         {
           name: "Application Review",
           href: "/adminDashboard/applicationReview",
-          icon: IdentificationIcon,
+          icon: EyeIcon,
         },
+        {
+          name: "Help and Support",
+          href: "/adminDashboard/helpSupport",
+          icon: InformationCircleIcon,
+        }
       ];
 
   return (
-    <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-custom1 px-6 pb-4">
-      <div className="flex h-16 shrink-0 items-center">
+    <div className="flex flex-col h-full border-r border-sky-100 bg-sky-50 shadow-md px-4 py-6">
+      {/* Logo Section */}
+      <div className="flex items-center mb-8 pl-2">
         <img
-          alt="Your Company"
-          src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-          className="h-8 w-auto"
+          alt="Logo"
+          src="/panda.svg"
+          className="h-10 w-auto mr-2"
         />
+        <h1 className="text-lg font-bold text-gray-800">Vendorify</h1>
       </div>
-      <nav className="flex flex-1 flex-col">
-        <ul role="list" className="flex flex-1 flex-col gap-y-7">
+
+      {/* Navigation */}
+      <nav className="flex flex-col flex-grow">
+        <ul role="list" className="space-y-4">
           {navigation.map((item) =>
             item.children ? (
               <SidebarDropdown key={item.name} title={item.name} icon={item.icon}>
-                <ul role="list" className="flex flex-col gap-y-2">
+                <ul className="pl-6 space-y-2">
                   {item.children.map((child) => (
                     <li key={child.name}>
                       <a
                         href={child.href}
                         className={classNames(
                           router.pathname === child.href
-                            ? "text-indigo-600"
-                            : "text-gray-700 hover:text-indigo-600",
-                          "group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold"
+                            ? "bg-indigo-100 text-indigo-600 font-bold"
+                            : "text-black hover:bg-gray-100 hover:text-indigo-600 font-bold",
+                          "flex items-center p-2 rounded-md text-sm font-bold"
                         )}
                       >
+                        
                         {child.name}
                       </a>
                     </li>
@@ -91,14 +119,12 @@ export default function Sidebar({ isUserDashboard }) {
                   href={item.href}
                   className={classNames(
                     router.pathname === item.href
-                      ? "text-indigo-600"
-                      : "text-gray-700 hover:text-indigo-600",
-                    "group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold"
+                      ? "bg-indigo-100 text-indigo-600 font-bold"
+                      : "text-black hover:bg-gray-100 hover:text-indigo-600 font-bold",
+                    "flex items-center p-2 rounded-md font-bold"
                   )}
                 >
-                  <item.icon
-                    className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
-                  />
+                  <item.icon className="h-5 w-5 text-black mr-3 font-bold" />
                   {item.name}
                 </a>
               </li>

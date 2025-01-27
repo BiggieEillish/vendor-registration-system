@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 export default function AddVendorForm() {
   const [openSections, setOpenSections] = useState({
@@ -20,82 +21,122 @@ export default function AddVendorForm() {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-6xl mx-auto mt-8">
-      <h2 className="text-xl font-semibold mb-6 text-blue-400">New Vendor Registration</h2>
+    <div className=" p-6 w-full max-w-6xl mx-auto mt-8">
+      
 
       {/* Registration Section */}
-      <div>
-        <button
-          onClick={() => toggleSection('registration')}
-          className="w-full text-left bg-gray-100 p-4 rounded-lg mb-2 text-lg font-semibold text-gray-700"
-        >
-          Registration ID {openSections.registration ? '-' : '+'}
-        </button>
-        {openSections.registration && (
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+      <div className='shadow-md bg-slate-50 m-4 p-6 rounded-lg border border-slate-100'>
+      <div className=" border border-blue-200 rounded-lg overflow-hidden">
+      {/* Header / Title Bar */}
+      <button
+        onClick={() => toggleSection('registration')}
+        className="
+          flex 
+          space-x-2
+          items-center 
+          w-full 
+          bg-blue-100 
+          p-4 
+          text-lg 
+          font-semibold 
+          text-gray-700
+        "
+      >
+        <span>REGISTRATION ID</span>
+        <span>{openSections.registration ? (
+          <ChevronUpIcon className="h-5 w-5 text-blue-600" />
+        ) : (
+          <ChevronDownIcon className="h-5 w-5 text-blue-600" />
+        )}</span>
+      </button>
+
+      {openSections.registration && (
+        
+        <div className="p-4 bg-white">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Registration ID */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Registration ID 
+              <label className="block mb-1 font-bold text-gray-700">
+                Registration ID <span className="text-blue-500">*</span>
               </label>
               <input
                 type="text"
                 required
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 bg-white text-black"
+                className="text-gray-900 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
               />
             </div>
+            
+            {/* Requested By */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Requested By
               </label>
               <input
                 type="text"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 bg-white text-black"
+                className="text-gray-900 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
               />
             </div>
+            
+            {/* Approved By */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Approved By
               </label>
               <input
                 type="text"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 bg-white text-black"
+                className="text-gray-900 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
               />
             </div>
+            
+            {/* Company Name */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Company Name
+              <label className="block mb-1 font-bold text-gray-700">
+                Company Name <span className="text-blue-500">*</span>
               </label>
               <input
                 type="text"
                 required
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 bg-white text-black"
+                className="text-gray-900 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
               />
             </div>
+            
+            {/* Document Creation Date */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Doc Creation Date
+              <label className="block mb-1 font-bold text-gray-700">
+                Document Creation Date
               </label>
               <input
                 type="date"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 bg-white text-black"
+                className="text-gray-900 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
               />
             </div>
           </form>
-        )}
-      </div>
+        </div>
+      )}
+    </div>
+    </div>
 
       {/* Company Business Overview Section */}
-      <div>
-        <button
-          onClick={() => toggleSection('businessOverview')}
-          className="w-full text-left bg-gray-100 p-4 rounded-lg mb-2 text-lg font-semibold text-gray-700"
-        >
-          Company Business Overview {openSections.businessOverview ? '-' : '+'}
-        </button>
+      <div className='m-4 p-6 shadow-md bg-slate-50 rounded-lg border border-slate-100'>
+      <div className=" border border-blue-200 rounded-lg overflow-hidden">
+      
+      <button
+        onClick={() => toggleSection('businessOverview')}
+        className="flex space-x-2 items-center w-full bg-blue-100 p-4 text-lg font-semibold text-gray-700"
+      >
+      <span>Company Business Overview</span>
+        {openSections.businessOverview ? (
+          <ChevronUpIcon className="h-5 w-5 text-blue-600" />
+        ) : (
+          <ChevronDownIcon className="h-5 w-5 text-blue-600" />
+        )}
+      </button>
+
         {openSections.businessOverview && (
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+          <div className="p-4 bg-white">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Vendor Name
               </label>
               <input
@@ -104,7 +145,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Vendor Selection Type
               </label>
               <input
@@ -113,7 +154,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div className="md:col-span-2">
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 General Details of Services
               </label>
               <textarea
@@ -121,7 +162,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Date Established
               </label>
               <input
@@ -130,7 +171,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Business Type
               </label>
               <input
@@ -139,7 +180,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Website
               </label>
               <input
@@ -148,21 +189,40 @@ export default function AddVendorForm() {
               />
             </div>
           </form>
+        </div>
         )}
+      
+      </div>
       </div>
 
       {/* Ownership Status Section */}
+      <div className='m-4 p-6 shadow-md bg-slate-50 rounded-lg border border-slate-100'>
+      <div className=" border border-blue-200 rounded-lg overflow-hidden">
       <div>
         <button
           onClick={() => toggleSection('ownershipStatus')}
-          className="w-full text-left bg-gray-100 p-4 rounded-lg mb-2 text-lg font-semibold text-gray-700"
+          className="flex 
+          space-x-2 
+          items-center 
+          w-full 
+          bg-blue-100 
+          p-4 
+          text-lg 
+          font-semibold 
+          text-gray-700"
         >
-          Ownership Status {openSections.ownershipStatus ? '-' : '+'}
+          <span>Ownership Status</span>
+          {openSections.ownershipStatus ? (
+          <ChevronUpIcon className="h-5 w-5 text-blue-600" />
+        ) : (
+          <ChevronDownIcon className="h-5 w-5 text-blue-600" />
+        )}
         </button>
         {openSections.ownershipStatus && (
-          <form className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+          <div className="p-4 bg-white">
+          <form className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Bumiputera %
               </label>
               <input
@@ -171,7 +231,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Non Bumiputera %
               </label>
               <input
@@ -180,7 +240,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Foreign %
               </label>
               <input
@@ -189,21 +249,41 @@ export default function AddVendorForm() {
               />
             </div>
           </form>
+        </div>
         )}
       </div>
+      </div>
+      </div>
+
 
       {/*Contact Person Information Section */}
+      <div className='m-4 p-6 shadow-md bg-slate-50 rounded-lg border border-slate-100'>
+      <div className=" border border-blue-200 rounded-lg overflow-hidden">
       <div>
         <button
           onClick={() => toggleSection('contactPerson')}
-          className="w-full text-left bg-gray-100 p-4 rounded-lg mb-2 text-lg font-semibold text-gray-700"
+          className="flex 
+          space-x-2 
+          items-center 
+          w-full 
+          bg-blue-100 
+          p-4 
+          text-lg 
+          font-semibold 
+          text-gray-700"
         >
-          Contact Person Information {openSections.contactPerson ? '-' : '+'}
+          <span>Contact Person Information</span>
+           {openSections.contactPerson ? (
+          <ChevronUpIcon className="h-5 w-5 text-blue-600" />
+        ) : (
+          <ChevronDownIcon className="h-5 w-5 text-blue-600" />
+        )}
         </button>
         {openSections.contactPerson && (
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+          <div className="p-4 bg-white">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Contact Person Primary
               </label>
               <input
@@ -212,7 +292,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Contact Phone Primary
               </label>
               <input
@@ -221,7 +301,7 @@ export default function AddVendorForm() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
+              <label className="block mb-1 font-bold text-gray-700">
                 Email Address Primary
               </label>
               <input
@@ -230,22 +310,41 @@ export default function AddVendorForm() {
               />
             </div>
           </form>
+        </div>
         )}
+      </div>
+      </div>
       </div>
 
       {/* Supporting Document Section */}
+      <div className='m-4 p-6 shadow-md bg-slate-50 rounded-lg border border-slate-100'>
+      <div className=" border border-blue-200 rounded-lg overflow-hidden">
       <div>
       <button
           onClick={() => toggleSection('supportingDocument')}
-          className="w-full text-left bg-gray-100 p-4 rounded-lg mb-2 text-lg font-semibold text-gray-700"
+          className="flex 
+          space-x-2 
+          items-center 
+          w-full 
+          bg-blue-100 
+          p-4 
+          text-lg 
+          font-semibold 
+          text-gray-700"
         >
-          Supporting Document {openSections.supportingDocument ? '-' : '+'}
+          <span>Supporting Document</span>
+           {openSections.supportingDocument ? (
+          <ChevronUpIcon className="h-5 w-5 text-blue-600" />
+        ) : (
+          <ChevronDownIcon className="h-5 w-5 text-blue-600" />
+        )}
         </button>
           {openSections.supportingDocument && (
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+            <div className="p-4 bg-white">
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* SSM Registration Number */}
               <div>
-                <label className="block mb-1 font-medium text-gray-700">SSM Registration Number <span className="text-red-500">*</span></label>
+                <label className="block mb-1 font-bold text-gray-700">SSM Registration Number <span className="text-blue-500">*</span></label>
                 <input
                   type="text"
                   required
@@ -255,30 +354,49 @@ export default function AddVendorForm() {
 
               {/* SSM Certificate Attachment */}
               <div className="mt-4">
-                <label className="block mb-1 font-medium text-gray-700">SSM Certificate Attachment <span className="text-red-500">*</span></label>
+                <label className="block mb-1 font-bold text-gray-700">SSM Certificate Attachment <span className="text-blue-500">*</span></label>
                 <input
                   type="file"
                   required
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 bg-white text-black"
                 />
               </div>
+              </form>
             </div>
           )}
         </div>
+      </div>
+      </div>
 
         {/* Procurement Section */}
-        <div>
+        <div className='m-4 p-6 shadow-md bg-slate-50 rounded-lg border border-slate-100'>
+        <div className=" border border-blue-200 rounded-lg overflow-hidden">
+        
         <button
           onClick={() => toggleSection('procurementSection')}
-          className="w-full text-left bg-gray-100 p-4 rounded-lg mb-2 text-lg font-semibold text-gray-700"
+          className="flex 
+          space-x-2 
+          items-center 
+          w-full 
+          bg-blue-100 
+          p-4 
+          text-lg 
+          font-semibold 
+          text-gray-700"
         >
-          Procurement Section {openSections.procurementSection ? '-' : '+'}
+          <span>Procurement Section</span>
+           {openSections.procurementSection ? (
+          <ChevronUpIcon className="h-5 w-5 text-blue-600" />
+        ) : (
+          <ChevronDownIcon className="h-5 w-5 text-blue-600" />
+        )}
         </button>
           {openSections.procurementSection && (
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+            <div className="p-4 bg-white">
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Remarks */}
               <div>
-                <label className="block mb-1 font-medium text-gray-700">Remarks</label>
+                <label className="block mb-1 font-bold text-gray-700">Remarks</label>
                 <textarea
                   rows={4}
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 bg-white text-black"
@@ -287,14 +405,16 @@ export default function AddVendorForm() {
 
               {/* Action Date */}
               <div className="mt-4">
-                <label className="block mb-1 font-medium text-gray-700">Action Date</label>
+                <label className="block mb-1 font-bold text-gray-700">Action Date</label>
                 <input
                   type="date"
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 bg-white text-black"
                 />
               </div>
+            </form>
             </div>
           )}
+        </div>
         </div>
 
       {/* Submit and Reset Buttons */}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { BsPencil, BsTrash, BsCheck2All } from 'react-icons/bs';
 
 const VendorsData = [
   {
@@ -73,20 +74,22 @@ export default function ApplicationReviewTable({ onEdit, onDelete }) {
                 <td className="py-4 px-4 sm:px-6 text-xs sm:text-sm text-gray-600">{vendor.vendorName}</td>
                 <td className="py-4 px-4 sm:px-6 text-xs sm:text-sm text-gray-600">{vendor.contactPersonPrimary}</td>
                 <td className="py-4 px-4 sm:px-6 text-xs sm:text-sm text-gray-600">{vendor.ssmRegistrationNumber}</td>
-                <td className="py-4 px-4 sm:px-6 text-xs sm:text-sm text-gray-600">
-                  <button
-                    className="mr-2 px-3 py-1 sm:px-4 sm:py-2 bg-green-600 text-white rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
-                    onClick={() => onEdit(vendor)}
-                  >
-                    Approve
-                  </button>
-                  <button
-                    className="mt-2 px-3 py-1 sm:px-4 sm:py-2 bg-red-600 text-white rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                    onClick={() => onDelete(vendor)}
-                  >
-                    Reject
-                  </button>
-                </td>
+                <td className="py-4 px-4 sm:px-6 text-xs sm:text-sm text-gray-600 space-x-2">
+                                        {/* Edit */}
+                                        <button
+                                          onClick={() => onEdit(vendor)}
+                                          className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                                        >
+                                          <BsCheck2All className=" text-cyan-600" />
+                                        </button>
+                                        {/* Delete */}
+                                        <button
+                                          onClick={() => onDelete(vendor)}
+                                          className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                                        >
+                                          <BsTrash className="text-red-500" />
+                                        </button>
+                                      </td>
               </tr>
             ))}
           </tbody>
